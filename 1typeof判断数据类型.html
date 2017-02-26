@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>typeof返回哪一项数据类型</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 基本数据类型与复杂数据类型区别
+	/*
+		1:复制（赋值）上的区别
+		1）基本数据类型赋值的值本身
+		2）复杂数据类型复制的是引用地址
+		1）基本类型
+		var a=10;
+		var b=a;
+			b=20;
+		console.log(a);//10
+		b获取值是a值的一份拷贝，虽然，两个变量的值是相等，但是两个变量保存两不同的基本数据类型值。b只是保存了a复制的一个副本。所以，当b的值改变时，a的值依然是10;
+		2）引用数据类型
+		JavaScript引用数据类型是保存在堆内存中的对象，与其它语言不同的是，你不可以直接访问堆内存空间中的位置和操作堆内存空间。只能通过操作对象在栈内存中的引用地址。所以引用类型的数据，在栈内存中保存的实际上是对象在堆内存中的引用地址。通过这个引用地址可以快速查找到保存在堆内存中的对象。
+		var obj1=new Object();
+		var obj2=obj1;
+		obj2.name="hehe";
+		console.log(obj1.name);//hehe
+		由上面例子，我们声明了一个引用数据类型变量obj1，并把它赋值给了另外一个引用数据类型变量obj2。当我们obj2添加了一个name属性并赋值"我有名字了"。obj1同样拥有了和obj2一样的name属性。说明这两个引用数据类型变量指向同一个堆内存对象。obj1赋值给obj2，实际只是把这个堆内存对象在栈内存的引用地址复制了一份给了obj2，但它们本质上共同指向了同一个堆内存对象。
+		2:内存中的保存方式
+		1）基本数据类型保存在栈内存
+		2）复杂数据类型保存在堆内存
+		3：存值个数
+		1)基本数据类型
+			是有固定数目的字节组成
+			这些字节可以在解析器的较底层进行操作比如Number和Boolean；
+		2)引用数据类型，可以包含任意数目的属性和元素
+		因此它们无法像基本数据类型那样很容易的操作。由于，引用数据类型的值是会发生变化的，所以通过跟基本数据类型一样的值传递方式，也就没什么意义了，因为会牵涉到大量的内存的复制和比较，效率太低。所以引用数据类型是通过引用传递方式，实际传递的只是对象的一个地址。比如Array和Function因为它们都是特殊的对象所以它都是引用类型。另外，引用类型是可以添加属性，基本类型虽然也可以添加属性，也不会报错，经测试添加完之后却是无法访问的。
+		var a = 12;
+		a.name = "myname";
+		console.log(a.name); // undefined
+	*/
+	
+
+	// 5中基本数据类型 值类型(简单的数据段) number string boolean null undefined
+	// 使用typeof判断数据类型 typeof返回的是一个字符串类型string
+	var num=1;
+	console.log("null-----"+typeof num);//number
+	var str="123";
+	console.log("str-----"+typeof str);//string
+	var boolean= false;
+	console.log("boolean-----"+typeof boolean);//boolean
+	var n=null;
+	console.log("null-----"+typeof n);//object
+	var udf=undefined;
+	console.log("udf-----"+typeof udf);//undfined
+	// 复杂数据类型 引用类型(右多个值构成的对象) Number String Boolean Function Object Array Date Math  RegExp
+	var fun=function(){}
+	console.log("fun-----"+typeof fun);//function
+	var obj={};
+	console.log("obj-----"+typeof obj);//object
+	var arr=[];
+	console.log("arr-----"+typeof arr);//object
+	var oNum=new Number(1,2,3);
+	console.log("oNum-----"+typeof oNum);
+	var oStr=new String('1,2,3');
+	console.log("oStr-----"+typeof oStr);
+	var oBoolean=new Boolean(false);
+	console.log("oBoolean-----"+typeof oBoolean);
+	var oFun=new Function();
+	console.log("oFun-----"+typeof oFun);
+	var oBj=new Object();
+	console.log("oBj-----"+typeof oBj);
+	var oArr=new Array();
+	console.log("oArr-----"+typeof oArr);
+	var oDate=new Date();
+	console.log("oDate-----"+typeof oDate)
+	var oMath=Math;
+	console.log("oMath-----"+typeof oMath);
+	var oReg=new RegExp();
+	console.log("oReg-----"+typeof oReg);
+	// 复杂数据类型判断instanceof
+	console.log(Array.isArray());//ie9+
+	console.log(toString.call([]));//"[object Array]"
+	// console.log(Object.toString.call().slice(8,-1));
+	// console.log([].constructor);
+	console.log(123 instanceof Number);
+	console.log("" instanceof String);
+	console.log(false instanceof Boolean);
+	console.log([] instanceof Array);//true
+	console.log(new Function instanceof Function);//true
+	// console.log(new )
+
+
+
+
+
+
+
+</script>
+</html>

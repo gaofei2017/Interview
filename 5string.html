@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>字符串常用方法</title>
+</head>
+<body>
+
+</body>
+<script>
+  var string="123456789";
+  /**
+   * 字符串分割
+   * s.split('分割字符'，length)：可以将字符串转换成数组，返回一个新数组
+   */
+  var myString="Hello World";
+  console.log(myString.split(''));
+  console.log(myString.split());
+  console.log(myString);
+
+  /**
+   * 字符串截取方法
+   * 不会改变原字符串，返回的是截取到的字符串
+   * 1.s.slice(startIndex,endIndex)包头不包尾
+   * 2.s.substr(startIndex,length)
+   * 3.s.substring(startIndex,endIndex)包头不包尾
+   */
+  // 1.s.slice(startIndex,endIndex)
+  // 不传入任何参数，或者传入的值是一个负值并且绝对值大于长度都会截取整个字符串
+  // 当起始索引大于结束索引，或者起始索引等于结束索引截取到的是空字符串
+  // 传入一个值代表从起始索引截取到最后
+  // 传入一个负值则表示从后面第几个位置截取到最后
+  //
+  console.log(string);//打印原字符串
+  console.log(string.slice(0,2));//12
+  console.log(string.slice());//截取整个字符串
+  console.log(string.slice(1));//从起始索引位置截取到最后
+  console.log(string.slice(-1));//从后面数第一个字符开始截取
+  console.log(string.slice(5,2));//截取的是一个空字符串
+  console.log(string.slice(2,2));//返回一个空字符串
+  console.log(string.slice(19));//返回一个空字符串
+  console.log(string.slice(-19));//返回整个字符串
+  console.log(string);
+  // 2.s.substr(startIndex,length)
+  /**
+   * 返回字符串中从指定位置开始到指定长度的子字符串
+   * 开始索引为负值则表示从后边第几个位置开始截取，当负值的绝对值大于长度了则
+   * 表示从0的位置开始截取，当结束的索引大于长度表示截取到最后
+   */
+  console.log(string.substr(0,2));//12
+  console.log(string.substr(-1,8));//9
+  console.log(string.substr(-11))//截取整个字符串
+  console.log(string);
+  /**
+   * 当开始索引大于结束索引将两者对换，有任意一个大于字符串成都表示截取到随后，
+   * 有任意一个小于0则表示从开始位置截取
+   */
+  console.log(string.substring(8,1));//2345678将两者对换
+  console.log(string.substring(-1,10));//截取整个字符串
+  /**
+   * 大小写转换
+   * s.toUpperCase()
+   * s.toLowerCase()
+   */
+  console.log(string);
+  var str='abdcdkss';
+  console.log(str.toUpperCase());
+  console.log(str);
+  /**
+   * 位置检索
+   * 1>s.indexOf('要查的字符',startIndex)
+   * 返回要查找字符首次在字符串中出现的位置索引，找不到返回-1
+   *2>s.charAt(index)根据索引查找字符，返回指定位置的字符
+   */
+  // 1>s.indexOf('要查的字符',startIndex)
+  console.log(str.indexOf());//-1
+  console.log(str.indexOf(''));//0
+  console.log(str.indexOf('sbsjssk',0));//-1
+  console.log(str.indexOf("",1));//1返回起始位置索引之前的长度
+  // 2>s.charAt(index)根据索引查找字符，返回指定位置的字符
+  console.log(str.charAt(2));//d
+  /**
+   * 字符串替换
+   * s.replace(原字符串，新字符串);
+   */
+  console.log(str.replace('a','b'));
+  console.log(str);
+//习题：编写一个函数，将如下字符串'get-element-by-id'修改为驼峰表示法'getElementById'
+var str = 'get-element-by-id';
+      function combo(str){
+        var newStr=str.split('-');
+        for (var i = 1; i < newStr.length; i++) {
+          newStr[i]=newStr[i].charAt(0).toUpperCase()+newStr[i].substring(1);
+        }
+        return newStr.join('');
+      }
+      console.log(combo(str));
+
+</script>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>阻止事件冒泡与默认事件</title>
+</head>
+<body>
+  <h1>阻止事件冒泡</h1>
+  <p>ie9+:e.stopPropagation()
+    return false;
+    ie9-:window.event.cancelBubble=true;
+  </p>
+  <h3>阻止默认行为</h3>
+  <p>html标签具有默认的行为：1.a标签的默认跳转2.表单提交submit按钮点击后自动提交3.文本框获得焦点</p>
+  <p>
+    ie9-：window.event.returnValue=false;
+    ie9+:e.preventDefalut()
+  </p>
+</body>
+<script></script>
+</html>

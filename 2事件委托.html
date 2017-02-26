@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件委托</title>
+  <style>
+    *{
+      margin: 20px;
+    }
+    #box{
+      width: 400px;
+      height: 300px;
+      border:1px solid red;
+    }
+    #sub1{
+      width: 300px;
+      height: 200px;
+      border:1px solid blue;
+    }
+    #divOne,#divTwo{
+      width: 100px;
+      height: 50px;
+      background-color: pink;
+
+    }
+  </style>
+</head>
+<body>
+    <div id="box">box
+      <div id="sub1">sub1
+        <div id="divOne" onclick="alert('我是通过普通事件触发的')">div1</div>
+        <div id="divTwo">div2</div>
+      </div>
+    </div>
+    <hr />
+    <h3>1.事件绑定与普通事件的那些事！</h3>
+    <p>
+        <b>普通事件：</b>
+        在html元素上添加的特定属性
+    <p>
+    <p>
+      <b>事件绑定：</b>
+      通过javascript标记(id tag class)获取dom元素，给元素添加特定方法
+    </p>
+    <p>
+      <b>传统事件绑定与w3c标准事件绑定的区别</b>
+      <i>1）绑定形式不同</i>
+      标准事件绑定
+      div.onclick=function(){}
+      ie9以上：div.addEventListener=function(){'click',function(){},false}//第三个参数默认false也就是事件冒泡
+      ie9以下：div.attachEvent('onclick',function(){})与div.detachEvent('onclick',)//事件类型传参时需要加上on
+      <i>2)事件覆盖与否</i>
+      通过传统的方式给同一个元素绑定的相同的事件后面的事件会覆盖之前绑定的事件，
+      <i>3)事件流支持与否</i>
+      传统事件绑定没有捕获，而标准事件绑定支持冒泡和捕获
+
+
+    </p>
+
+    <h3>2.事件委托是什么？</h3>
+    <p>
+      利用事件冒泡原理，将事件绑定到父容器中，让父容器代为触发
+    </p>
+    <h3>3.ie和dom事件流的区别</h3>
+    <p>
+      ie9以前：attachEvent('onclick')、detachEvent('onclick')
+      ie9开始跟dom事件流一样了！addEventListener('click',function(){})
+      <b>attachEvent与addEventListener的区别</b>
+      1.是否支持冒泡
+      2.事件类型传参
+      3.对同一个目标元素绑定多个事件后执行顺序
+    </p>
+
+</body>
+<script>
+  var box=document.getElementById('box');
+  var divOne=document.getElementById('divOne');
+  var sub1=document.getElementById('sub1');
+  var divTwo=document.getElementById('divTwo');
+  console.log(box);
+  // box.onclick=function(){
+  //     alert('box被点击了');
+  // }
+  // box.onclick=function(){
+  //     alert('box的点击事件被覆盖了')
+  // }
+  divOne.addEventListener('click',function(){
+    alert('div1被触发了');
+  });
+  // sub1.onclick=function(){
+  //   alert('sub1被点击');
+  // }
+  //
+  box.addEventListener('click',function(){
+      alert('box被触发了了');
+  })
+  sub1.addEventListener('click',function(){
+    alert('sub1被触发了');
+  })
+    // divTwo.onclick=function(){
+    //   alert('div2被点击了')
+    // }
+</script>
+</html>
